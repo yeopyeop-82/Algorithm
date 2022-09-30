@@ -4,7 +4,6 @@ int s[64][64];
 
 void zip(int i, int j, int n) {
     int count = 0;
-
     for (int p = i; p < i + n; p++) {
         for (int q = j; q < j + n; q++) {
             if (s[p][q] == 1) {
