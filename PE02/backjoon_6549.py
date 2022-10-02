@@ -11,6 +11,7 @@ while True:
     stack = deque()
     answer = 0
 
+    # 왼쪽부터 차례대로 탐색
     for i in range(n):
         while len(stack) != 0 and rec[stack[-1]] > rec[i]:
             tmp = stack.pop()
@@ -22,6 +23,7 @@ while True:
             answer = max(answer, width * rec[tmp])
         stack.append(i)
 
+    # 스택에 남아있는 것을 처리
     while len(stack) != 0:
         tmp = stack.pop()
 
