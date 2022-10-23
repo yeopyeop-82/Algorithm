@@ -2,10 +2,8 @@
 
 using namespace std;
 
-// 배열을 정렬하지 않고도
-// selection 부분 잘 알기
-
-int partition(int s, int e, int A[]) {
+int partition(int s, int e, int A[])
+{
     int left = s + 1;
     int right = e;
     int pivot = A[s];
@@ -17,16 +15,17 @@ int partition(int s, int e, int A[]) {
         while (A[right] >= pivot && left <= right) {
             right--;
         }
-        if (left <= right) {
-            swap(A[left], A[right]);
+
+        if(left <= right) {
+            swap (A[left], A[right]);
         }
     }
     swap(A[right], A[s]);
     return right;
 }
 
-int selection (int s, int e, int A[], int k)
-{
+int select(int s, int e, int k, int A[]) {
+
     if (s == e) {
         return A[s];
     }
@@ -36,17 +35,11 @@ int selection (int s, int e, int A[], int k)
     if (k == m) {
         return A[k];
     }
-    else if (k < m) {
-        return selection(s, m - 1, A, k);
+
+    if (k < m) {
+        return select(s, m-1, k, A); // k 가 m 보다 작으면 left subset의 k번째 수
     }
-    else {
-        return selection(m + 1, e, A, k - m);
+    else if (k > m){
+        return select(m + 1, e, k-m, A); // k 가 m보닫 크면 right subset의 k - m 번째 수
     }
-
-}
-
-int main(void) {
-    int A[] = {13, 75, 72, 45, 15, 88, 43, 77, 40};
-    cout << selection(0, 9, A, 8);
-
 }
