@@ -11,7 +11,6 @@ queue<int> q;
  
 void BFS(int v) {
     visited[v] = true;
-    //cout << v << " ";
  
     q.push(v);
     while (!q.empty()) {
